@@ -1,5 +1,5 @@
 {
-  "appId": "com.todolist.app",
+  "appId": "app.todolist.huddavi",
   "appName": "to-do-list-app",
   "bundledWebRuntime": false,
   "npmClient": "yarn",
