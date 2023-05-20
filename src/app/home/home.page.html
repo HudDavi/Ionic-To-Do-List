@@ -1,9 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-item lines="none">
-      <ion-label style="font-weight: 800;font-size: 3em;">
-        Hoje
-        <p style="font-weight: 400;color: #433465 ;">{{today | date:'fullDate'}}</p>
+      <ion-label style="font-weight: 800;font-size: 2em;">
+        To-Do List App
+        <p style="font-weight: 400;color: #ffffff ;">{{today | date:'fullDate'}}</p>
       </ion-label>
     </ion-item>
   </ion-toolbar>
@@ -26,17 +26,17 @@
     </ion-card-header>
 
     <ion-card-content>
-      <ion-label>Vencimento {{item.value.itemDueDate | date:'fullDate'}}</ion-label>
+      <ion-label>Prazo: {{item.value.itemDueDate | date:'fullDate'}}</ion-label>
     </ion-card-content>
 
     <ion-row>
       <ion-item button (click)="update(item)">
         <ion-icon name="create-outline"></ion-icon>
-        <p>Atualizar</p>
+        <p>Editar</p>
       </ion-item>
       <ion-item button (click)="delete(item.key)">
         <ion-icon name="trash-outline"></ion-icon>
-        <p>Cancelar</p>
+        <p>Excluir</p>
       </ion-item>
     </ion-row>
 

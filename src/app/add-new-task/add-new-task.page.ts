@@ -9,14 +9,14 @@ import { TodoService } from '../todo.service';
   styleUrls: ['./add-new-task.page.scss'],
 })
 export class AddNewTaskPage implements OnInit {
-  categories = []
-  categorySelectedCategory
+  categories: string[] = []
+  categorySelectedCategory!: string
 
   newTaskObj = {}
-  itemName
-  itemDueDate
-  itemPriority
-  itemCategory
+  itemName!: string
+  itemDueDate!: string
+  itemPriority!: string
+  itemCategory!: string
 
 
   constructor(public modalCtlr: ModalController, public todoService: TodoService) {
@@ -24,8 +24,9 @@ export class AddNewTaskPage implements OnInit {
   }
 
   ngOnInit() {
-    this.categories.push('work')
-    this.categories.push('personal')
+    this.categories.push('Concluída')
+    this.categories.push('Não Concluída')
+    this.categories.push('Em Andamento')
   }
 
   async add() {
@@ -34,16 +35,16 @@ export class AddNewTaskPage implements OnInit {
     let uid = this.itemName + this.itemDueDate
 
     if (uid) {
-      await this.todoService.addTask(uid, this.newTaskObj)
+      this.todoService.addTask(uid, this.newTaskObj)
     } else {
-      console.log("can't save empty task");
+      console.log("Tarefa Vazia não Pode ser Salva");
     }
 
 
     this.dismis()
   }
 
-  selectCategory(index) {
+  selectCategory(index: number) {
     this.categorySelectedCategory = this.categories[index]
     console.log(this.categorySelectedCategory);
   }
@@ -51,5 +52,4 @@ export class AddNewTaskPage implements OnInit {
   async dismis() {
     await this.modalCtlr.dismiss(this.newTaskObj)
   }
-
 }
