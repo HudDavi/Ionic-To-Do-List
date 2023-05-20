@@ -1,6 +1,6 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>Nova Tarefa</ion-title>
+    <ion-title>Editar Tarefa</ion-title>
     <ion-icon name="close" slot="end" size="larger" class="ion-padding" (click)="dismis()"></ion-icon>
   </ion-toolbar>
 </ion-header>
@@ -9,7 +9,7 @@
   <form>
     <ion-card class="ion-align-self-center">
       <ion-item>
-        <ion-input [(ngModel)]="itemName" placeholder="Título da Tarefa..." type="text" required></ion-input>
+        <ion-textarea [(ngModel)]="itemName" placeholder="Título da Tarefa..." type="text" required></ion-textarea>
       </ion-item>
 
       <ion-item>
