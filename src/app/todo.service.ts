@@ -10,15 +10,15 @@ export class TodoService {
     this.init()
   }
 
-  addTask(key, value) {
+  addTask(key: string, value: {}) {
     this.storage.set(key, value)
   }
 
-  deleteTask(key) {
+  deleteTask(key: string) {
     this.storage.remove(key)
   }
 
-  updateTask(key, newValue) {
+  updateTask(key: string, newValue: {}) {
     this.storage.set(key, newValue)
     this.getAllTasks()
   }

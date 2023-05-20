@@ -33,12 +33,12 @@ export class HomePage {
     console.log(this.todoService.getAllTasks());
   }
 
-  delete(key) {
+  delete(key: string) {
     this.todoService.deleteTask(key)
     this.getAllTask()
   }
 
-  async update(selectedTask) {
+  async update(selectedTask: string) {
     const modal = await this.modalCtlr.create({
       component: UpdateTaskPage,
       componentProps: { task: selectedTask }

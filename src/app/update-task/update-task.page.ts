@@ -8,28 +8,30 @@ import { TodoService } from '../todo.service';
   styleUrls: ['./update-task.page.scss'],
 })
 export class UpdateTaskPage implements OnInit {
-  @Input() task;
-  categories = []
-  categorySelectedCategory
+  @Input()
+  task!: { value: { itemName: string; itemDueDate: string; itemPriority: string; itemCategory: string; }; key: string; };
+  categories: string[] = []
+  categorySelectedCategory!: string
 
   newTaskObj = {}
-  itemName
-  itemDueDate
-  itemPriority
-  itemCategory
+  itemName!: string
+  itemDueDate!: string
+  itemPriority!: string
+  itemCategory!: string
 
   constructor(public modalCtlr: ModalController, public todoServive: TodoService) { }
 
   ngOnInit() {
-    this.categories.push('work')
-    this.categories.push('personal')
+    this.categories.push('Concluída')
+    this.categories.push('Não Concluída')
+    this.categories.push('Em Andamento')
 
     this.itemName = this.task.value.itemName
     this.itemDueDate = this.task.value.itemDueDate
     this.itemPriority = this.task.value.itemPriority
     this.categorySelectedCategory = this.task.value.itemCategory
   }
-  selectCategory(index) {
+  selectCategory(index: number) {
     this.categorySelectedCategory = this.categories[index]
     console.log(this.categorySelectedCategory);
   }
@@ -41,7 +43,7 @@ export class UpdateTaskPage implements OnInit {
   async update() {
     this.newTaskObj = ({ itemName: this.itemName, itemDueDate: this.itemDueDate, itemPriority: this.itemPriority, itemCategory: this.categorySelectedCategory })
     let uid = this.task.key
-    await this.todoServive.updateTask(uid, this.newTaskObj)
+    this.todoServive.updateTask(uid, this.newTaskObj)
     this.dismis()
   }
 }
