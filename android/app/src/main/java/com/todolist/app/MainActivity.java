@@ -1,5 +1,0 @@
-package com.todolist.app;
-
-import com.getcapacitor.BridgeActivity;
-
-public class MainActivity extends BridgeActivity {}
