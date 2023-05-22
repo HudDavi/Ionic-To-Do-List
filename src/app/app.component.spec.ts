@@ -1,22 +1,21 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { TestBed, async } from '@angular/core/testing';
-import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { AppComponent } from './app.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { TestBed } from "@angular/core/testing";
+import { Platform } from "@ionic/angular";
+import { SplashScreen } from "@ionic-native/splash-screen/ngx";
+import { StatusBar } from "@ionic-native/status-bar/ngx";
+import { AppComponent } from "./app.component";
 
-describe('AppComponent', () => {
+describe("AppComponent", () => {
+  let statusBarSpy: StatusBar;
+  let splashScreenSpy: SplashScreen;
+  let platformReadySpy: Promise<void>;
+  let platformSpy: Platform;
 
-  let statusBarSpy;
-  let splashScreenSpy;
-  let platformReadySpy;
-  let platformSpy;
-
-  beforeEach(async(() => {
-    statusBarSpy = jasmine.createSpyObj('StatusBar', ['styleDefault']);
-    splashScreenSpy = jasmine.createSpyObj('SplashScreen', ['hide']);
+  beforeEach(() => {
+    statusBarSpy = jasmine.createSpyObj("StatusBar", ["styleDefault"]);
+    splashScreenSpy = jasmine.createSpyObj("SplashScreen", ["hide"]);
     platformReadySpy = Promise.resolve();
-    platformSpy = jasmine.createSpyObj('Platform', { ready: platformReadySpy });
+    platformSpy = jasmine.createSpyObj("Platform", { ready: platformReadySpy });
 
     TestBed.configureTestingModule({
       declarations: [AppComponent],
@@ -27,15 +26,15 @@ describe('AppComponent', () => {
         { provide: Platform, useValue: platformSpy },
       ],
     }).compileComponents();
-  }));
+  });
 
-  it('Deve Criar o Aplicativo', () => {
+  it("Deve Criar o Aplicativo", () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it('Deve Inicializar o Aplicativo', async () => {
+  it("Deve Inicializar o Aplicativo", async () => {
     TestBed.createComponent(AppComponent);
     expect(platformSpy.ready).toHaveBeenCalled();
     await platformReadySpy;
