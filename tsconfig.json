@@ -13,11 +13,8 @@
     "importHelpers": true,
     "target": "es2015",
     "strict": true,
-    "types": [],
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "types": ["jasmine"],
+    "lib": ["es2018", "dom"]
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

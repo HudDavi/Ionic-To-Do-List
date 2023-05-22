@@ -1,7 +1,7 @@
-import { TestBed } from '@angular/core/testing';
-import { TodoService } from './todo.service';
+import { TestBed } from "@angular/core/testing";
+import { TodoService } from "./todo.service";
 
-describe('Serviço de Lista de Tarefas', () => {
+describe("Serviço de Lista de Tarefas", () => {
   let service: TodoService;
 
   beforeEach(() => {
@@ -9,7 +9,7 @@ describe('Serviço de Lista de Tarefas', () => {
     service = TestBed.inject(TodoService);
   });
 
-  it('Deve ser Criado', () => {
+  it("Deve ser Criado", () => {
     expect(service).toBeTruthy();
   });
 });
